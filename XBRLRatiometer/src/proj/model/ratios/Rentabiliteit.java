@@ -20,8 +20,8 @@ public class Rentabiliteit extends Ratios {
 	/**
 	 * Netto verkoopmarge<br>9904 / 70
 	 */
-	public int CalculateNettoVerkoopmarge() {
-		int nettoVerkoopmarge = 0;
+	public double CalculateNettoVerkoopmarge() {
+		double nettoVerkoopmarge = 0;
 		nettoVerkoopmarge = this.getGainLossPeriod() / this.getTurnover();
 		return nettoVerkoopmarge;
 	}
@@ -30,8 +30,8 @@ public class Rentabiliteit extends Ratios {
 	 * Bruto verkoopmarge<br>
 	 * 9902 / 70
 	 */
-	public int CalculateBrutoVerkoopmarge() {
-		int brutoVerkoopmarge = 0;
+	public double CalculateBrutoVerkoopmarge() {
+		double brutoVerkoopmarge = 0;
 		brutoVerkoopmarge = this.getGainLossOrdinaryActivitiesBeforeTaxes()
 				/ this.getTurnover();
 		return brutoVerkoopmarge;
@@ -42,8 +42,8 @@ public class Rentabiliteit extends Ratios {
 	 * 9904 / (42/48 + 492/3 + 16 + 17 +
 	 * 10/15)
 	 */
-	public int NettoRentabiliteitTV() {
-		int nettoRentabiliteitTV = 0;
+	public double NettoRentabiliteitTV() {
+		double nettoRentabiliteitTV = 0;
 		nettoRentabiliteitTV = this.getGainLossPeriod() / this.SolvSubThree();
 		return nettoRentabiliteitTV;
 	}
@@ -52,8 +52,8 @@ public class Rentabiliteit extends Ratios {
 	 * Bruto rentabiliteit totaal vermogen<br>
 	 * 9902 / (42/48 + 492/3 + 16 + 17 + 10/15)
 	 */
-	public int BrutoRentabiliteitTV() {
-		int brutoRentabiliteitTV = 0;
+	public double BrutoRentabiliteitTV() {
+		double brutoRentabiliteitTV = 0;
 		brutoRentabiliteitTV = this.getGainLossOrdinaryActivitiesBeforeTaxes()
 				/ this.SolvSubThree();
 		return brutoRentabiliteitTV;
@@ -63,8 +63,8 @@ public class Rentabiliteit extends Ratios {
 	 * Netto rentabiliteit eigen vermogen<br>
 	 * 9904 / 10/15
 	 */
-	public int CalculateNettoRentabiliteitEV() {
-		int nettoRentabiliteitEV = 0;
+	public double CalculateNettoRentabiliteitEV() {
+		double nettoRentabiliteitEV = 0;
 		nettoRentabiliteitEV = this.getGainLossPeriod() / this.getEquity();
 		return nettoRentabiliteitEV;
 	}
@@ -73,8 +73,8 @@ public class Rentabiliteit extends Ratios {
 	 * Bruto rentabiliteit eigen vermogen<br>
 	 * 9902 / 10/15
 	 */
-	public int CalculateBrutoRentabiliteitEV() {
-		int brutoRentabiliteitEV = 0;
+	public double CalculateBrutoRentabiliteitEV() {
+		double brutoRentabiliteitEV = 0;
 		brutoRentabiliteitEV = this.getGainLossOrdinaryActivitiesBeforeTaxes()
 				/ this.getEquity();
 		return brutoRentabiliteitEV;

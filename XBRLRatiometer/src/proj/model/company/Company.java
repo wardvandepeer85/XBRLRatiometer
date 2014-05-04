@@ -85,8 +85,28 @@ public class Company {
 	}
 
 	// Methoden
+	/**
+	 * Methode zoekt postcode op in een db 
+	 * @param postcode
+	 * @return
+	 */
 	public String getPlaatsnaam(int postcode) {
 		return "a";
 
 	}
+
+
+	
+	//toString
+	@Override
+	public String toString() {
+		return "Company [companyName=" + companyName + ", companyNumber="
+				+ companyNumber + ", legalFormat=" + legalFormat
+				+ ", companyAddressStreet=" + companyAddressStreet
+				+ ", companyAddressHouseNumber=" + companyAddressHouseNumber
+				+ ", companyAddressPostCode=" + companyAddressPostCode
+				+ ", companyAddressCountyCode=" + companyAddressCountyCode
+				+ "]";
+	}
+	
 }

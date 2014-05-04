@@ -1,6 +1,6 @@
 package proj.model.ratios;
 
-public class Liquiditeit {
+public class Liquiditeit extends Ratios{
 	//attributen
 	
 	
@@ -11,23 +11,23 @@ public class Liquiditeit {
 	/**
 	 * Current ratio  = (54/58 + 3 + 40/41 + 50/53 + 490/1) / (42/48 + 492/3)
 	 */
-	public int CalculateCurrentRatio(){
-		return 0;
+	public double CalculateCurrentRatio(){
+		return this.LiqsubOne() / this.SolvSubOne() ;
 	}
 
 	
 	/**
 	 * Quick ratio  = (54/58 + 40/41 + 50/53 + 490/1) / (42/48 + 492/3)
 	 */
-	public int CalculateQuickRatio(){
-		return 0;
+	public double CalculateQuickRatio(){
+		return this.LiqsubTwo() / this.SolvSubOne();
 	}
 
 
 	/**
-	 * Werkkapitaal = (54/58 + 3 + 40/41 + 50/53 + 490/1) -  (42/48 + 492/3)
+	 * Werkkapitaal = (54/58 + 3 + 40/41 + 50/53 + 490/1) - (42/48 + 492/3)
 	 */
-	public int CalculateWerkkapitaal(){
-		return 0;
+	public double CalculateWerkkapitaal(){
+		return this.LiqsubOne() - this.SolvSubOne() ;
 	}
 }

@@ -11,6 +11,16 @@ public class Company {
 	private String companyAddressCountyCode;
 
 	// Constructor
+	/**
+	 * Company Constructor met alle attributen
+	 * @param companyName
+	 * @param companyNumber
+	 * @param legalFormat
+	 * @param companyAddressStreet
+	 * @param companyAddressHouseNumber
+	 * @param companyAddressPostCode
+	 * @param companyAddressCountyCode
+	 */
 	public Company(String companyName, String companyNumber, int legalFormat,
 			String companyAddressStreet, String companyAddressHouseNumber,
 			int companyAddressPostCode, String companyAddressCountyCode) {
@@ -22,11 +32,34 @@ public class Company {
 		this.companyAddressPostCode = companyAddressPostCode;
 		this.companyAddressCountyCode = companyAddressCountyCode;
 	}
-
+	
+	/**
+	 * Company Constructor zonder legalFormat)
+	 * @param companyName
+	 * @param companyNumber
+	 * @param companyAddressStreet
+	 * @param companyAddressHouseNumber
+	 * @param companyAddressPostCode
+	 * @param companyAddressCountyCode
+	 */
+	public Company(String companyName, String companyNumber,
+			String companyAddressStreet, String companyAddressHouseNumber,
+			int companyAddressPostCode, String companyAddressCountyCode) {
+		this.companyName = companyName;
+		this.companyNumber = companyNumber;
+		this.companyAddressStreet = companyAddressStreet;
+		this.companyAddressHouseNumber = companyAddressHouseNumber;
+		this.companyAddressPostCode = companyAddressPostCode;
+		this.companyAddressCountyCode = companyAddressCountyCode;
+	}
+	
+	/**
+	 * Lege Company Constructor
+	 */
 	public Company() {
-
 	}
 
+	
 	// Getters en setters
 	public String getCompanyName() {
 		return companyName;
@@ -94,8 +127,16 @@ public class Company {
 		return "a";
 
 	}
+	
+	/**
+	 * Methode zoekt postcode op in een db 
+	 * @param postcode
+	 * @return
+	 */
+	public String getLegalFormatTitle(int legalformat) {
+		return "a";
 
-
+	}
 	
 	//toString
 	@Override

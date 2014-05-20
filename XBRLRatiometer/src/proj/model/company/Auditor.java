@@ -36,14 +36,14 @@ public class Auditor extends Company {
 	public String toString() {
 		return "Auditor [getCompanyName()=" + getCompanyName()
 				+ ", getCompanyNumber()=" + getCompanyNumber()
-				+ ", getLegalFormat()=" + getLegalFormat()
 				+ ", getCompanyAddressStreet()=" + getCompanyAddressStreet()
 				+ ", getCompanyAddressHouseNumber()="
 				+ getCompanyAddressHouseNumber()
 				+ ", getCompanyAddressPostCode()="
 				+ getCompanyAddressPostCode()
 				+ ", getCompanyAddressCountyCode()="
-				+ getCompanyAddressCountyCode() + "]";
+				+ getCompanyAddressCountyCode() + 
+				", companyNumberCheck= " + this.checkBECompanyNumber(this.getCompanyNumber()) + "]";
 	}
 
 }

@@ -121,7 +121,7 @@ public class Company {
 	/**
 	 * Methode zoekt postcode op in een db 
 	 * @param postcode
-	 * @return
+	 * @return String - plaatsnaam van de postcode
 	 */
 	public String getPlaatsnaam(int postcode) {
 		return "a";
@@ -130,13 +130,57 @@ public class Company {
 	
 	/**
 	 * Methode zoekt postcode op in een db 
-	 * @param postcode
-	 * @return
+	 * @param legalformatcode
+	 * @return String - de benaming van de juiste 
 	 */
 	public String getLegalFormatTitle(int legalformat) {
 		return "a";
 
 	}
+	
+	/**
+	 * Methode om het ondernemingsnummer/BTWnummer te controleren
+	 * @param ondernemingsnummer
+	 * @return String met het juiste 
+	 */
+	public boolean checkBECompanyNumber(String ondernemingsNummer) {
+		//formule: 97 - ((de eerste 8 cijfers) Mod 97) = de twee laatste cijfers
+	
+		int ondernemingsnummerDeel1 = new Integer(ondernemingsNummer.substring(2,10)) ;
+		int ondernemingsnummerDeel2 = new Integer(ondernemingsNummer.substring(10,12)) ;
+		boolean check;
+		
+		if (ondernemingsnummerDeel2 == 97 - ondernemingsnummerDeel1 % 97){
+			check = true;
+		}else{
+			check = false;
+		}
+		return check;
+
+	}
+	
+	/**
+	 * 
+	 * @param ondernemingsNummer
+	 * @return
+	 */
+	public boolean checkNLCompanyNumber(String ondernemingsNummer) {
+		//formule: 97 - ((de eerste 8 cijfers) Mod 97) = de twee laatste cijfers
+	
+		int ondernemingsnummerDeel1 = new Integer(ondernemingsNummer.substring(0,7)) ;
+		int ondernemingsnummerDeel2 = new Integer(ondernemingsNummer.substring(10,12)) ;
+		boolean check;
+		
+		if (ondernemingsnummerDeel2 == 97 - ondernemingsnummerDeel1 % 97){
+			check = true;
+		}else{
+			check = false;
+		}
+		return check;
+
+	}
+	
+	
 	
 	//toString
 	@Override
@@ -147,7 +191,7 @@ public class Company {
 				+ ", companyAddressHouseNumber=" + companyAddressHouseNumber
 				+ ", companyAddressPostCode=" + companyAddressPostCode
 				+ ", companyAddressCountyCode=" + companyAddressCountyCode
-				+ "]";
+				+ ", companyNumberCheck= " + this.checkBECompanyNumber(companyNumber)   +"]";
 	}
 	
 }

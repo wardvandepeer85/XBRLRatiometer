@@ -1,6 +1,5 @@
 package proj.model.annualaccount;
 
-import java.util.Arrays;
 import java.util.Date;
 
 import proj.model.company.Auditor;
@@ -80,6 +79,11 @@ public class AnnualAccount {
 	 * 70 - pfs:Turnover - Omzet
 	 */
 	private double turnover;
+	/**
+	 * 74 - pfs:OtherOperatingIncome
+	 */
+	private double otherOperatingIncome;
+	
 
 	/**
 	 * 490/1 - pfs:DeferredChargesAccruedIncome - Overlopende rekeningen Activa
@@ -91,10 +95,36 @@ public class AnnualAccount {
 	private double accruedChargesDeferredIncome;
 
 	/**
+	 * 630 - pfs:DepreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets
+	 */
+	private double depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets;
+	 /**
+	  *  631/4 - pfs:AmountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks
+	  */
+	private double amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks;
+	 /**
+	  *  635/7 - pfs:ProvisionsRisksChargesAppropriationsWriteBacks
+	  */
+	private double provisionsRisksChargesAppropriationsWriteBacks;
+	/**
 	 * 650 - pfs:DebtCharges - Kosten van schulden
 	 */
+	
 	private double debtCharges;
+	/**
+	 * 740 pfs:OperatingSubsidiesCompensatoryAmounts 
+	 */
+	private double operatingSubsidiesCompensatoryAmounts;
 
+	/**
+	 * 9125 - capitalSubsidiesGrantedPublicAuthoritiesRecordedIncomePeriod
+	 */
+	private double capitalSubsidiesGrantedPaRip;
+	
+	/**
+	 * 9901 - pfs:OperatingProfitLoss
+	 */
+	private double operatingProfitLoss;
 	/**
 	 * 9902 - pfs:GainLossOrdinaryActivitiesBeforeTaxes Winst (Verlies) uit de
 	 * gewone bedrijfsuitoefening vóór belasting
@@ -405,6 +435,35 @@ public class AnnualAccount {
 	public void setTurnover(double turnover) {
 		this.turnover = turnover;
 	}
+	/**
+	 * getter 74
+	 */
+	public double getOtherOperatingIncome() {
+		return otherOperatingIncome;
+	}
+
+	/**
+	 * setter 74
+	 */
+	public void setOtherOperatingIncome(double otherOperatingIncome) {
+		this.otherOperatingIncome = otherOperatingIncome;
+	}
+
+	/**
+	 * getter 740
+	 */
+	public double getOperatingSubsidiesCompensatoryAmounts() {
+		return operatingSubsidiesCompensatoryAmounts;
+	}
+
+	/**
+	 * setter 740
+	 */
+	public void setOperatingSubsidiesCompensatoryAmounts(
+			double operatingSubsidiesCompensatoryAmounts) {
+		this.operatingSubsidiesCompensatoryAmounts = operatingSubsidiesCompensatoryAmounts;
+	}
+	
 
 	/**
 	 * getter 490/1 - pfs:DeferredChargesAccruedIncome
@@ -437,6 +496,47 @@ public class AnnualAccount {
 	}
 
 	/**
+	 * getter 630 - pfs:DepreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets
+	 */
+	public double getDepreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets() {
+		return depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets;
+	}
+	/**
+	 * setter 630 - pfs:DepreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets
+	 */
+	public void setDepreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets(
+			double depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets) {
+		this.depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets = depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets;
+	}
+	/**
+	 * getter 631/4 - pfs:AmountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks
+	 */
+	public double getAmountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBack() {
+		return amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks;
+	}
+	/**
+	 * setter 631/4 - pfs:AmountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks
+	 */
+	public void setAmountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBack(
+			double amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBack) {
+		this.amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks = amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBack;
+	}
+	
+	/**
+	 * getter 635/7 - pfs:ProvisionsRisksChargesAppropriationsWriteBacks
+	 */
+	public double getProvisionsRisksChargesAppropriationsWriteBack() {
+		return provisionsRisksChargesAppropriationsWriteBacks;
+	}
+	/**
+	 * setter 635/7 - pfs:ProvisionsRisksChargesAppropriationsWriteBacks
+	 */
+	public void setProvisionsRisksChargesAppropriationsWriteBack(
+			double provisionsRisksChargesAppropriationsWriteBack) {
+		this.provisionsRisksChargesAppropriationsWriteBacks = provisionsRisksChargesAppropriationsWriteBack;
+	}
+	
+	/**
 	 * getter 650 - pfs:DebtCharges
 	 */
 	public double getDebtCharges() {
@@ -449,7 +549,34 @@ public class AnnualAccount {
 	public void setDebtCharges(double debtCharges) {
 		this.debtCharges = debtCharges;
 	}
+	
+	/**
+	 * getter 9125 CapitalSubsidiesGrantedPublicAuthoritiesRecordedIncomePeriod
+	 */
+	public double getCapitalSubsidiesGrantedPaRip() {
+		return capitalSubsidiesGrantedPaRip;
+	}
+	/**
+	 * setter 9125 CapitalSubsidiesGrantedPublicAuthoritiesRecordedIncomePeriod
+	 */
+	public void setCapitalSubsidiesGrantedPaRip(
+			double capitalSubsidiesGrantedPaRip) {
+		this.capitalSubsidiesGrantedPaRip = capitalSubsidiesGrantedPaRip;
+	}
 
+	
+	/**
+	 * setter 9901 - OperatingProfitLoss
+	 */
+	public double getOperatingProfitLoss() {
+		return operatingProfitLoss;
+	}
+	/**
+	 * getter 9901 - OperatingProfitLoss
+	 */
+	public void setOperatingProfitLoss(double operatingProfitLoss) {
+		this.operatingProfitLoss = operatingProfitLoss;
+	}
 	/**
 	 * getter 9902 - pfs:GainLossPeriod
 	 */
@@ -533,7 +660,6 @@ public class AnnualAccount {
 				+ this.getDeferredChargesAccruedIncome();
 	}
 
-	// toString
 
 	// 2. Solvabiliteit
 	/**
@@ -547,7 +673,7 @@ public class AnnualAccount {
 	}
 
 	/**
-	 * Solvabiliteit - Graad financiële onafhankelijkheid<br>
+	 * Solvabiliteit - Graad financiële onafhankelijkheid (EV/TV)<br>
 	 * (10/15) / (42/48 + 492/3 + 16 + 17 + 10/15)<br>
 	 * %
 	 */
@@ -592,18 +718,20 @@ public class AnnualAccount {
 
 	// 3. Liquiditeit
 	/**
-	 * Liquiditeit - Liquiditeitsratio's in ruime zin<br>
-	 * (29/58 - 29) / (42/48 + 492/3)
+	 * Liquiditeit - Liquiditeitsratio's in ruime zin / Current ratio<br>
+	 * (29/58 - 29) / (42/48 + 492/3)<br>
+	 * geen percentage
 	 */
-	public double CalculateLiquiditeitRuimeZin() {
+	public double CalculateLiquiditeitCurrentRatio() {
 		return (this.getCurrentsAssets() - this
 				.getAmountsReceivableMoreOneYear())
 				/ this.SolvabiliteitSubtotaalOne();
 	}
 
 	/**
-	 * Liquiditeit - Liquiditeitsratio's in enge zin<br>
-	 * (40/41 + 50/53 + 54/58) / 42/48
+	 * Liquiditeit - Liquiditeitsratio's in enge zin / Acid test / Quick ratio<br>
+	 * (40/41 + 50/53 + 54/58) / 42/48<br>
+	 * geen percentage
 	 */
 	public double CalculateLiquiditeitEngeZin() {
 		return this.LiquiditeitSubtotaalThree()
@@ -611,26 +739,9 @@ public class AnnualAccount {
 	}
 
 	/**
-	 * Liquiditeit - Current ratio<br>
-	 * (3 + 40/41 + 50/53 + 54/58 + 490/1) / (42/48 + 492/3)
-	 */
-	public double CalculateCurrentRatio() {
-		return this.LiquiditeitSubtotaalOne()
-				/ this.SolvabiliteitSubtotaalOne();
-	}
-
-	/**
-	 * Liquiditeit - Quick ratio<br>
-	 * (40/41 + 50/53 + 54/58 + 490/1) / (42/48 + 492/3)
-	 */
-	public double CalculateQuickRatio() {
-		return this.LiquiditeitSubtotaalTwo()
-				/ this.SolvabiliteitSubtotaalOne();
-	}
-
-	/**
-	 * Liquiditeit - Werkkapitaal<br>
-	 * (3 + 40/41 + 50/53 + 54/58 + 490/1) - (42/48 + 492/3)
+	 * Liquiditeit - Werkkapitaal / Nettobedrijfskapitaal<br>
+	 * (3 + 40/41 + 50/53 + 54/58 + 490/1) - (42/48 + 492/3)<br>
+	 * geen percentage
 	 */
 	public double CalculateWerkkapitaal() {
 		return this.LiquiditeitSubtotaalOne()
@@ -642,25 +753,36 @@ public class AnnualAccount {
 	// 4. Rendabiliteit
 	/**
 	 * Rendabiliteit - Netto verkoopmarge<br>
-	 * 9904 / 70
+	 * (9901 + 9125) / (70 + 74 - 740)
 	 * %
 	 */
 	public double CalculateNettoVerkoopmarge() {
 		double nettoVerkoopmarge = 0;
-		nettoVerkoopmarge = this.getGainLossPeriod() / this.getTurnover();
-		return nettoVerkoopmarge * 100;
+		
+		double t = this.getOperatingProfitLoss() + this.getCapitalSubsidiesGrantedPaRip();
+		double n = this.getTurnover() + this.getOtherOperatingIncome() - this.getOperatingSubsidiesCompensatoryAmounts();
+		
+		nettoVerkoopmarge = (t / n) * 100;
+		
+		return nettoVerkoopmarge;
 	}
 
 	/**
 	 * Rendabiliteit - Bruto verkoopmarge<br>
-	 * 9902 / 70
+	 * (9901 + 630 + 631/4 + 635/7) / (70 + 74 - 740)<br>
+	 * 9904 / 10/15
 	 * %
 	 */
 	public double CalculateBrutoVerkoopmarge() {
 		double brutoVerkoopmarge = 0;
-		brutoVerkoopmarge = this.getGainLossOrdinaryActivitiesBeforeTaxes()
-				/ this.getTurnover();
-		return brutoVerkoopmarge * 100;
+		
+		double t = (this.getOperatingProfitLoss() + this.getDepreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets() +
+		this.getAmountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBack() + this.getProvisionsRisksChargesAppropriationsWriteBack());
+		double n = this.getTurnover() + this.getOtherOperatingIncome() - this.getOperatingSubsidiesCompensatoryAmounts();
+		
+		brutoVerkoopmarge = (t/n) * 100;
+		
+		return brutoVerkoopmarge;
 	}
 
 	/**
@@ -712,40 +834,96 @@ public class AnnualAccount {
 
 	@Override
 	public String toString() {
-		return "AnnualAccount \nCompany="
-				+ company
-				+ "\nstartdateFY="
-				+ startdateFY
-				+ "\nenddateFY="
-				+ enddateFY
-				+ "\nAuditor="
-				+ auditor
-				+ "\nSolvabiliteit:\n-CalculateGraadFinanciëleAfhankelijkheid()="
-				+ CalculateGraadFinanciëleAfhankelijkheid()
+		return "AnnualAccount ["
+				/*+ "\n3 - stocksContractsProgress="
+				+ stocksContractsProgress
+				+ "\n10/15 - equity="
+				+ equity
+				+ "\n13 - reserves="
+				+ reserves
+				+ "\n14 - accumulatedProfitsLosses="
+				+ accumulatedProfitsLosses
+				+ "\n16 - provisionsDeferredTaxes="
+				+ provisionsDeferredTaxes
+				+ "\n17 - amountsPayableMoreOneYear="
+				+ amountsPayableMoreOneYear
+				+ "\n20/58 - assets="
+				+ assets
+				+ "\n29 - amountsReceivableMoreOneYear="
+				+ amountsReceivableMoreOneYear
+				+ "\n29/58 - currentsAssets="
+				+ currentsAssets
+				+ "\n40/41 - amountsReceivableWithinOneYear="
+				+ amountsReceivableWithinOneYear
+				+ "\n42/48 - amountsPayableWithinOneYear="
+				+ amountsPayableWithinOneYear
+				+ "\n50/53 - cashBankHand="
+				+ cashBankHand
+				+ "\n54/58 - currentInvestments="
+				+ currentInvestments
+				+ "\n70 - turnover="
+				+ turnover
+				+ "\n74 - otherOperatingIncome="
+				+ otherOperatingIncome
+				+ "\n490/1 - deferredChargesAccruedIncome="
+				+ deferredChargesAccruedIncome
+				+ "\n492/3 - accruedChargesDeferredIncome="
+				+ accruedChargesDeferredIncome
+				+ "\n630 - depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets="
+				+ depreciationOtherAmountsWrittenDownFormationExpensesIntangibleTangibleFixedAssets
+				+ "\n631/4 - amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBack="
+				+ amountsWrittenDownStocksContractsProgressTradeDebtorsAppropriationsWriteBacks
+				+ "\n635/7 - provisionsRisksChargesAppropriationsWriteBacks="
+				+ provisionsRisksChargesAppropriationsWriteBacks
+				+ "\n650 - debtCharges="
+				+ debtCharges
+				+ "\n740 - operatingSubsidiesCompensatoryAmounts="
+				+ operatingSubsidiesCompensatoryAmounts
+				+ "\n9125 - capitalSubsidiesGrantedPublicAuthoritiesRecordedIncomePeriod=" + capitalSubsidiesGrantedPaRip
+				+ "\n9901 - noperatingProfitLoss=" + operatingProfitLoss
+				+ "\n9902 - gainLossOrdinaryActivitiesBeforeTaxes=" + gainLossOrdinaryActivitiesBeforeTaxes 
+				+ "\n9904 - gainLossPeriod=" + gainLossPeriod
+				*/
+				
+				+ "\nCompany=" + company
+				+ "\nstartdateFY="+ startdateFY
+				+ "\nenddateFY=" + enddateFY
+				+ "\nAuditor=" + auditor
+				
+				+ "\n\nSolvabiliteit:\n-CalculateGraadFinanciëleAfhankelijkheid()="
+					+ CalculateGraadFinanciëleAfhankelijkheid()
 				+ ", \n-CalculateGraadFinanciëleOnafhankelijkheid()="
-				+ CalculateGraadFinanciëleOnafhankelijkheid()
-				+ ", \n-CalculateSolvabiliteitsverhouding()="
-				+ CalculateSolvabiliteitsverhouding()
-				+ ", \n-CalculateZelffinancieringsgraad()="
-				+ CalculateZelffinancieringsgraad() + ", \n-CalculateDekkingVV()="
-				+ CalculateDekkingVV() + ", \n-CalculateDekkingRentekostVV()="
-				+ CalculateDekkingRentekostVV()
-				+ "\nLiquiditeit:\n-CalculateLiquiditeitRuimeZin()="
-				+ CalculateLiquiditeitRuimeZin()
-				+ ", \n-CalculateLiquiditeitEngeZin()="
-				+ CalculateLiquiditeitEngeZin() + ", \n-CalculateCurrentRatio()="
-				+ CalculateCurrentRatio() + ", \n-CalculateQuickRatio()="
-				+ CalculateQuickRatio() + ", \n-CalculateWerkkapitaal()="
-				+ CalculateWerkkapitaal()
-				+ "\nRendabiliteit:\nCalculateNettoVerkoopmarge()="
-				+ CalculateNettoVerkoopmarge()
-				+ ", \n-CalculateBrutoVerkoopmarge()="
-				+ CalculateBrutoVerkoopmarge() + ", \n-NettoRentabiliteitTV()="
-				+ NettoRentabiliteitTV() + ", \n-BrutoRentabiliteitTV()="
-				+ BrutoRentabiliteitTV() + ", \n-CalculateNettoRentabiliteitEV()="
-				+ CalculateNettoRentabiliteitEV()
-				+ ", \n-CalculateBrutoRentabiliteitEV()="
-				+ CalculateBrutoRentabiliteitEV();
+		+ CalculateGraadFinanciëleOnafhankelijkheid()
+		+ ", \n-CalculateSolvabiliteitsverhouding()="
+		+ CalculateSolvabiliteitsverhouding()
+		+ ", \n-CalculateZelffinancieringsgraad()="
+		+ CalculateZelffinancieringsgraad() + ", \n-CalculateDekkingVV()="
+		+ CalculateDekkingVV() + ", \n-CalculateDekkingRentekostVV()="
+		+ CalculateDekkingRentekostVV()
+		+ "\nLiquiditeit:\n-CalculateLiquiditeitRuimeZin()="
+		+ CalculateLiquiditeitCurrentRatio()
+		+ ", \n-CalculateLiquiditeitEngeZin()="
+		+ CalculateLiquiditeitEngeZin() +", \n-CalculateWerkkapitaal()="
+		+ CalculateWerkkapitaal()
+		+ "\nRendabiliteit:\n-CalculateNettoVerkoopmarge()="
+		+ CalculateNettoVerkoopmarge()
+		+ ", \n-CalculateBrutoVerkoopmarge()="
+		+ CalculateBrutoVerkoopmarge() + ", \n-NettoRentabiliteitTV()="
+		+ NettoRentabiliteitTV() + ", \n-BrutoRentabiliteitTV()="
+		+ BrutoRentabiliteitTV() + ", \n-CalculateNettoRentabiliteitEV()="
+		+ CalculateNettoRentabiliteitEV()
+		+ ", \n-CalculateBrutoRentabiliteitEV()="
+		+ CalculateBrutoRentabiliteitEV()
+		
+		;
 	}
+
+
+
+
+	
+
+	
+
 
 }

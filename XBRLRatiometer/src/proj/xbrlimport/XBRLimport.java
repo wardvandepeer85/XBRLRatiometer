@@ -7,15 +7,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.*;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import proj.model.company.Auditor;
@@ -74,8 +71,6 @@ public class XBRLimport {
 	 * Methode om de Companyinformatie in te laden
 	 */
 	public Company loadCompanyInformation() {
-		//System.out.println("\n---------------pfs-gcd:EntityInformation----------------------------");
-
 		NodeList CompanyList = doc.getElementsByTagName("pfs-gcd:EntityInformation");
 		Node CompanyNode = CompanyList.item(0);
 		Element CompanyElement = (Element) CompanyNode;
@@ -112,10 +107,7 @@ public class XBRLimport {
 	 * Methode Auditorinformatie op te laden uit het XBRL bestand
 	 */
 	public Auditor loadAuditorInformation() {
-		//System.out.println("\n---------------pfs:AccountantsEntity----------------------------");
-		
-		NodeList AccountantList = doc
-				.getElementsByTagName("pfs:AccountantsEntity");
+		NodeList AccountantList = doc.getElementsByTagName("pfs:AccountantsEntity");
 		Node AccountantNode = AccountantList.item(0);
 		Element AccountantElement = (Element) AccountantNode;
 		Auditor auditor = new Auditor();
@@ -163,22 +155,171 @@ public class XBRLimport {
 	
 	
 	/**
-	 * Methode om de balanspost uit het XBRL bestand op te laden
+	 * Methode om de balanspost uit het XBRL bestand op te laden (contextRef="CurrentInstant")
 	 * @param node
 	 * @param balancepost
 	 * @return double balanspost
 	 */
-	public double retrieve(String node, String balancepost) {
-		if (doc.getElementsByTagName(node).getLength() == 0) {
-			double balanspost = 0;
-			//System.out.println( balancepost + " - " + balanspost);
-			return balanspost;
-		} else {
+	public double retrieveCurrentInstant(String node, String balancepost) {
+		NodeList nodeList = doc.getElementsByTagName(node);
+		double balanspost;
+		int numberNodes = doc.getElementsByTagName(node).getLength();
+		//System.out.println(balancepost + " - " + numberNodes);
+		
+		switch (numberNodes) {
+		case 3:
+			int itemNumberThree = 0;
+			String contextRef = nodeList.item(itemNumberThree).getAttributes().getNamedItem("contextRef").getNodeValue();
+			//System.out.println(contextRef);
+			
+			if (contextRef.equals("CurrentInstant") || contextRef.equals("CurrentDuration") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberThree).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;
+			
+		case 2:
+			int itemNumberTwo = 0;
+			String contextRefTwo = nodeList.item(itemNumberTwo).getAttributes().getNamedItem("contextRef").getNodeValue();
+			
+			if (contextRefTwo.equals("CurrentInstant") || contextRefTwo.equals("CurrentDuration") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberTwo).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;
+
+		case 1:
+			int itemNumberOne = 0;
+			String contextRefOne = nodeList.item(itemNumberOne).getAttributes().getNamedItem("contextRef").getNodeValue();
+			if (contextRefOne.equals("CurrentInstant") || contextRefOne.equals("CurrentDuration")) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberOne).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;	
+			
+		default:
+			balanspost = 0;
+			break;
+		}
+		
+		return balanspost;
+		
+
+		
+	}
+	
+	public double retrievePrecedingDuration(String node){		
+		NodeList nodeList = doc.getElementsByTagName(node);
+		double balanspost;
+		int numberNodes = doc.getElementsByTagName(node).getLength();
+		
+		switch (numberNodes) {
+		case 3:
+			int itemNumberThree = 1;
+			String contextRef = nodeList.item(itemNumberThree).getAttributes().getNamedItem("contextRef").getNodeValue();
+			
+			if (contextRef.equals("PrecedingInstant") || contextRef.equals("PrecedingInstant") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberThree).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;
+			
+		case 2:
+			int itemNumberTwo = 1;
+			String contextRefTwo = nodeList.item(itemNumberTwo).getAttributes().getNamedItem("contextRef").getNodeValue();
+		
+			if (contextRefTwo.equals("PrecedingInstant") || contextRefTwo.equals("PrecedingDuration") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberTwo).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;
+
+		case 1:
+			int itemNumberOne = 0;
+			String contextRefOne = nodeList.item(itemNumberOne).getAttributes().getNamedItem("contextRef").getNodeValue();
+			
+			if (contextRefOne.equals("PrecedingInstant") || contextRefOne.equals("PrecedingDuration") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberOne).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;	
+			
+		default:
+			balanspost = 0;
+			break;
+		}
+				
+		return balanspost;	
+	}
+	
+	
+	public double retrieveCurrentInstanta(String node) {
+		NodeList nodeList = doc.getElementsByTagName(node);
+		double balanspost;
+		int numberNodes = doc.getElementsByTagName(node).getLength();
+		
+		switch (numberNodes) {
+		case 2:
+			int itemNumberTwo = 0;
+			String contextRef = nodeList.item(itemNumberTwo).getAttributes().getNamedItem("contextRef").getNodeValue();
+			if (contextRef.equals("CurrentInstant") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberTwo).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;
+
+		case 1:
+			int itemNumberOne = 0;
+			String contextRefOne = nodeList.item(itemNumberOne).getAttributes().getNamedItem("contextRef").getNodeValue();
+			if (contextRefOne.equals("CurrentInstant") ) {
+				balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(itemNumberOne).getTextContent());;
+				//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(1).getTextContent());
+			} else {
+				balanspost = 0;
+			}
+			break;	
+			
+		default:
+			balanspost = 0;
+			break;
+		}
+		
+		return balanspost;
+		
+		
+		
+		/*
+		//NodeList nodeList = doc.getElementsByTagName(node);
+		//String contextRef = nodeList.item(0).getAttributes().getNamedItem("contextRef").getNodeValue();
+		
+		if (doc.getElementsByTagName(node).getLength() != 0) {
+		//if (doc.getElementsByTagName(node).getLength() != 0 && contextRef.equals("CurrentInstant") ) {
 			double balanspost = Double.parseDouble(doc.getElementsByTagName(node).item(0).getTextContent());;
 			//System.out.println(balancepost + " - " + doc.getElementsByTagName(node).item(0).getTextContent());
 			return balanspost; 
+		} else {
+			double balanspost = 0;
+			//System.out.println( balancepost + " - " + balanspost);
+			return balanspost;
 		}
-
+		*/
 	}
+	
+
+	
 
 }
